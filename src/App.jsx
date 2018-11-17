@@ -19,24 +19,14 @@ class App extends Component {
    signupOpen  = () => this.setState({showSignup: true});
    signupClose = () => this.setState({showSignup: false});
 
-   // Takes a string, username and password.
-   handleLogin = (username, password) => {
-      ends.login(username, password).then((token) => {
-         console.log("SUCCESS", token);
-         // set the token here.
-
-         // endpoint here
+   handleLogin = (email, password) => {
+      ends.login(email, password).then((token) => {
          this.setState({loggedIn: true, showLogin: false});
       })
    }
 
-   // Takes a string, username and password.
-   handleSignup = (username, email, password) => {
-      ends.signup(username, email, password).then((token) => {
-         console.log("SUCCESS", token);
-         // set the token here.
-
-         // endpoint here
+   handleSignup = (email, password) => {
+      ends.signup(email, password).then((token) => {
          this.setState({loggedIn: true, showSignup: false});
       })
    }
@@ -74,7 +64,9 @@ class App extends Component {
                signupClose={this.signupClose}
             />
 
-            {this.props.children}
+            <div className="con-page-body">
+               {this.props.children}
+            </div>
          </div>
       );
    }

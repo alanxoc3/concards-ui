@@ -1,7 +1,6 @@
-import firebase from './firebase';
-require('firebase/auth')
+import firebase from './firebase'
 
-export function login({username, password}) {
+export function login({email, password}) {
    return new Promise(function(resolve, reject) {
       setTimeout(function() {
          resolve('foo');

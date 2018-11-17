@@ -7,28 +7,11 @@ import { Link } from "react-router-dom";
 
 // handleLogout loggedIn loginOpen signupOpen
 class ConNavbar extends Component {
-   state = {
-      username: "",
-      password: "",
-   };
-
-   usernameChange = (e) => {
-      this.setState({ username: e.target.value });
-   }
-
-   passwordChange = (e) => {
-      this.setState({ password: e.target.value });
-   }
-
-   getValidationState = () => {
-      return true;
-   }
-
    render() {
       let logView = (
          <>
-            { this.props.isGlobal && <Navbar.Text> <Link to="/"> <img alt="profile" src={person} />  </Link> </Navbar.Text>}
-            {!this.props.isGlobal && <Navbar.Text> <Link to="/global"> <img alt="all" src={earth} /> </Link> </Navbar.Text>}
+            { this.props.isGlobal && <Navbar.Text> <Link to="/"> <img alt="personal collection" src={person} />  </Link> </Navbar.Text>}
+            {!this.props.isGlobal && <Navbar.Text> <Link to="/global"> <img alt="global collection" src={earth} /> </Link> </Navbar.Text>}
             <Nav> <NavItem onClick={this.props.handleLogout}> Log Out </NavItem> </Nav>
          </>
       );
