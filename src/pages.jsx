@@ -11,7 +11,7 @@ export class ReviewPage extends Component {
 export class GlobalPage extends Component {
    render() {
       return (
-         <p>Hello Global World!!!</p>
+         <h1>Global Collection</h1>
       );
    }
 }
@@ -19,7 +19,7 @@ export class GlobalPage extends Component {
 export class MainPage extends Component {
    render() {
       return (
-         <p>Hello World!!!</p>
+         <h1>Personal Collection</h1>
       );
    }
 }

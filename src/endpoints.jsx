@@ -1,4 +1,4 @@
-export function login({username, password}) {
+export function login({email, password}) {
    return new Promise(function(resolve, reject) {
       setTimeout(function() {
          resolve('foo');
@@ -6,7 +6,7 @@ export function login({username, password}) {
    });
 }
 
-export function signup({username, password}) {
+export function signup({email, password}) {
    return new Promise(function(resolve, reject) {
       setTimeout(function() {
          resolve('foo');
