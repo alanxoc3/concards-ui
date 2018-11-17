@@ -3,14 +3,25 @@ import ConNavbar from './ConNavbar';
 import ConLoginModal from './ConLoginModal';
 import ConSignupModal from './ConSignupModal';
 import { withRouter, } from "react-router";
+import { auth } from "./firebase";
+import firebase from "./firebase";
 import * as ends from "./endpoints";
 
 class App extends Component {
    state = {
       pathname: window.location.pathname,
-      loggedIn: false,
       showLogin: false,
       showSignup: false,
+      authUser: null,
+   }
+
+   componentDidMount() {
+      auth.onAuthStateChanged(authUser => {
+         console.log("CHANGED!!!", authUser);
+         authUser
+            ? this.setState({ authUser })
+            : this.setState({ authUser: null });
+      });
    }
 
    loginOpen  = () => this.setState({showLogin: true});
@@ -21,19 +32,21 @@ class App extends Component {
 
    handleLogin = (email, password) => {
       ends.login(email, password).then(() => {
-         this.setState({loggedIn: true, showLogin: false});
+         this.setState({showLogin: false});
       })
    }
 
    handleSignup = (email, password) => {
       ends.signup(email, password).then(() => {
-         this.setState({loggedIn: true, showSignup: false});
+         this.setState({showSignup: false});
       })
    }
 
    handleLogout = () => {
-    //   this.setState({loggedIn: false});
-        ends.import_cards_advanced({});
+      console.log("TESTING");
+      auth.signOut();
+      // TODO: Delete this comment.
+      //ends.import_cards_advanced({});
    }
 
    componentDidUpdate(prevProps) {
@@ -46,7 +59,7 @@ class App extends Component {
       return (
          <div className="con-app">
             <ConNavbar
-               loggedIn={this.state.loggedIn}
+               loggedIn={this.state.authUser !== null}
                handleLogout={this.handleLogout}
                loginOpen={this.loginOpen}
                signupOpen={this.signupOpen}

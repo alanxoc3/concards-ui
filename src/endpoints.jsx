@@ -1,19 +1,16 @@
-import firebase from './firebase'
+import { auth } from './firebase';
+import firebase from './firebase';
 
- //TODO remove those from the console
+ //TODO remove the console logs
 export function login(email, password) {
-   return firebase.auth()
-   .signInWithEmailAndPassword(email, password)
+   return auth.signInWithEmailAndPassword(email, password)
    .then((user) => {
     console.log(user);
    })
 }
 
 export function signup(email, password) {
-   
-   return firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
+   return auth.createUserWithEmailAndPassword(email, password)
     .then((user) => {
       console.log(user);
     });
@@ -46,13 +43,10 @@ export function get_card_json(cardText) {
 //cardText string
 export function import_cards_advanced(cardText) {
 
-    console.log(firebase.auth().currentUser.uid);
-     firebase.database().ref()
+    return firebase.database().ref()
                        .child("users")
-                       .child(firebase.auth().currentUser.uid)
-                       .push({answer: "test1", group: "test", notes: "test", question: "test"});
-                    //    .child(firebase.auth().currentUser.getIdToken)
-                       
+                       .child(auth.currentUser.uid)
+                       .push(parseCardText(cardText));
 }
 
 
