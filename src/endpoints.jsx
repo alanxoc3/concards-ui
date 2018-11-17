@@ -1,5 +1,9 @@
 export function login({username, password}) {
-
+   return new Promise(function(resolve, reject) {
+      setTimeout(function() {
+         resolve('foo');
+      }, 300);
+   });
 }
 
 export function login_email({email, password}) {

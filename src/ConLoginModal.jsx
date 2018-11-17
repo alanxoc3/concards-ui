@@ -12,11 +12,6 @@ function FieldGroup({ id, label, help, ...props }) {
 }
 
 export class ConLoginModal extends Component {
-   loginButton = () => {
-      this.props.loginClose();
-      this.props.handleLogin();
-   };
-
    render() {
       return (
          <Modal show={this.props.showLogin} onHide={this.props.loginClose}>
@@ -39,7 +34,7 @@ export class ConLoginModal extends Component {
                </form>
             </Modal.Body>
             <Modal.Footer>
-               <Button onClick={this.loginButton}>Log In</Button>
+               <Button onClick={this.props.handleLogin}>Log In</Button>
             </Modal.Footer>
          </Modal>
       );
