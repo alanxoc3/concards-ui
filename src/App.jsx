@@ -64,7 +64,7 @@ class App extends Component {
                signupClose={this.signupClose}
             />
 
-            <div className="con-page-body">
+            <div className="panel panel-default">
                {this.props.children}
             </div>
          </div>
