@@ -6,16 +6,30 @@ import { Navbar, Nav, NavItem, } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import * as ends from "./endpoints"; //TODO remove this
 
+function LinkIcon({alt, src, route, ...props}) {
+   return <Link to={route}> <img className="con-nav-icon" alt={alt} src={src} /> </Link>
+}
+
+function NavHolder({selectIndex, handleLogout, ...props}) {
+   let items = props.children.map((item, i) => {
+      return <NavItem key={i} className={(i === selectIndex) && "active"}> { item } </NavItem>
+   });
+
+   return (
+      <ul className="nav navbar-nav"> {items} </ul>
+   );
+}
+
 // handleLogout loggedIn loginOpen signupOpen
 class ConNavbar extends Component {
    render() {
       let logView = (
 
-         <>
-            { this.props.isGlobal && <Navbar.Text> <Link to="/"> <img alt="personal collection" src={person} />  </Link> </Navbar.Text>}
-            {!this.props.isGlobal && <Navbar.Text> <Link to="/global"> <img alt="global collection" src={earth} /> </Link> </Navbar.Text>}
-            <Nav> <NavItem onClick={this.props.handleLogout}> Log Out </NavItem> </Nav>
-         </>
+         <NavHolder selectIndex={this.props.isGlobal && 1 || 0 }>
+            <LinkIcon route="/"       src={person} alt="person collection" />
+            <LinkIcon route="/global" src={earth} alt="global collection" />
+            <span onClick={this.props.handleLogout}> Log Out </span>
+         </NavHolder>
       );
 
       if (!this.props.loggedIn) {
