@@ -5,7 +5,7 @@ import earth from './res/earth.svg';
 import { Navbar, Nav, NavItem, } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
-// handleLogout loggedIn loginOpen
+// handleLogout loggedIn loginOpen signupOpen
 class ConNavbar extends Component {
    state = {
       username: "",
@@ -35,7 +35,10 @@ class ConNavbar extends Component {
 
       if (!this.props.loggedIn) {
          logView = (
-            <Nav> <NavItem onClick={this.props.loginOpen}> Log In </NavItem> </Nav>
+            <Nav>
+               <NavItem onClick={this.props.signupOpen}> Sign Up </NavItem>
+               <NavItem onClick={this.props.loginOpen}> Log In </NavItem>
+            </Nav>
          );
       }
 

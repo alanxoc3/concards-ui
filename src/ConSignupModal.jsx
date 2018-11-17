@@ -11,22 +11,27 @@ function FieldGroup({ id, label, help, ...props }) {
   );
 }
 
-export class ConLoginModal extends Component {
+export class ConSignupModal extends Component {
    render() {
       return (
-         <Modal show={this.props.showLogin} onHide={this.props.loginClose}>
+         <Modal show={this.props.showSignup} onHide={this.props.signupClose}>
             <Modal.Header closeButton>
-               <Modal.Title>Enter Your Information</Modal.Title>
+               <Modal.Title>Create An Account</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                <form>
                   <FieldGroup
-                     id="formLoginUsername"
-                     type="text" label="Username or Email"
+                     id="formSignupUsername"
+                     type="text" label="Username"
+                     placeholder="example101"
+                  />
+                  <FieldGroup
+                     id="formSignupEmail"
+                     type="text" label="Email"
                      placeholder="example@concards.net"
                   />
                   <FieldGroup
-                     id="formLoginPassword"
+                     id="formSignupPassword"
                      label="Password"
                      type="password"
                      placeholder="123456"
@@ -34,11 +39,11 @@ export class ConLoginModal extends Component {
                </form>
             </Modal.Body>
             <Modal.Footer>
-               <Button onClick={this.props.handleLogin}>Log In</Button>
+               <Button onClick={this.props.handleSignup}>Sign Up</Button>
             </Modal.Footer>
          </Modal>
       );
    }
 }
 
-export default ConLoginModal;
+export default ConSignupModal;
