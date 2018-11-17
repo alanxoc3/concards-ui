@@ -13,10 +13,12 @@ code {
     monospace;
 }
 
+/* Overwrite theme */
 .navbar-brand {
+   margin-top: -3;
    float: left;
-   height: 50px;
-   padding: 10px 10px;
+   height: 53px;
+   padding: 0px 5px;
    font-size: 18px;
    line-height: 20px;
 }
@@ -47,3 +49,43 @@ code {
 .con-navtext {
    cursor: pointer;
 }
+
+.con-group {
+   font-weight: 700;
+}
+
+.con-author {
+   font-weight: 300;
+}
+
+.con-squarify {
+   border: 0px;
+   border-radius: 0px;
+}
+
+.con-right-square {
+   background: transparent;
+}
+
+/* Overwrite this bootstrap thing */
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 0px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 0px;
+ }
+
+/* No Small Screens Allowed! */
+/* Thanks to: https://stackoverflow.com/questions/17394854/how-can-i-disable-bootstraps-affix-on-smaller-screens */
+@media (min-width: 768px) {
+    .affix {
+        position: fixed;
+        position: static;
+    }
+}
+
+.con-app, .screen-size {
+   min-width: 768px;
+}
+
+.container { width: @container-desktop !important 940px; }

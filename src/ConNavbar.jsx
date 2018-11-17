@@ -46,12 +46,9 @@ class ConNavbar extends Component {
          <Navbar fluid>
             <Navbar.Form pullLeft>
                <Navbar.Header>
-                  <Link to="/">
-                     <Navbar.Brand>
-                        <img src={logo} alt="logo"/> 
-                     </Navbar.Brand>
-                  </Link>
-
+                  <Navbar.Brand>
+                     <img src={logo} alt="logo"/> 
+                  </Navbar.Brand>
                </Navbar.Header>
             </Navbar.Form>
 
