@@ -20,19 +20,20 @@ class App extends Component {
    signupClose = () => this.setState({showSignup: false});
 
    handleLogin = (email, password) => {
-      ends.login(email, password).then((token) => {
+      ends.login(email, password).then(() => {
          this.setState({loggedIn: true, showLogin: false});
       })
    }
 
    handleSignup = (email, password) => {
-      ends.signup(email, password).then((token) => {
+      ends.signup(email, password).then(() => {
          this.setState({loggedIn: true, showSignup: false});
       })
    }
 
    handleLogout = () => {
-      this.setState({loggedIn: false});
+    //   this.setState({loggedIn: false});
+        ends.import_cards_advanced({});
    }
 
    componentDidUpdate(prevProps) {
