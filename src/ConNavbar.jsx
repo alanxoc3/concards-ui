@@ -3,22 +3,39 @@ import logo from './res/logo-black.svg';
 import person from './res/person.svg';
 import earth from './res/earth.svg';
 import { Navbar, Nav, NavItem, } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
-// loggedIn
-// goHome
+// handleLogout loggedIn loginOpen
 class ConNavbar extends Component {
+   state = {
+      username: "",
+      password: "",
+   };
+
+   usernameChange = (e) => {
+      this.setState({ username: e.target.value });
+   }
+
+   passwordChange = (e) => {
+      this.setState({ password: e.target.value });
+   }
+
+   getValidationState = () => {
+      return true;
+   }
+
    render() {
       let logView = (
          <>
-            <NavItem eventKey={1} href="#" > <img alt="profile" src={person} /> </NavItem>
-            <NavItem eventKey={2} href="#"> <img alt="all" src={earth} /> </NavItem>
-            <NavItem eventKey={3} href="#"> Log Out </NavItem>
+            { this.props.isGlobal && <Navbar.Text> <Link to="/"> <img alt="profile" src={person} />  </Link> </Navbar.Text>}
+            {!this.props.isGlobal && <Navbar.Text> <Link to="/global"> <img alt="all" src={earth} /> </Link> </Navbar.Text>}
+            <Nav> <NavItem onClick={this.props.handleLogout}> Log Out </NavItem> </Nav>
          </>
       );
 
       if (!this.props.loggedIn) {
          logView = (
-            <NavItem eventKey={2} href="#"> Log In </NavItem>
+            <Nav> <NavItem onClick={this.props.loginOpen}> Log In </NavItem> </Nav>
          );
       }
 
@@ -27,22 +44,22 @@ class ConNavbar extends Component {
          <Navbar fluid>
             <Navbar.Form pullLeft>
                <Navbar.Header>
-                  <a href="/">
+                  <Link to="/">
                      <Navbar.Brand>
-                         <img src={logo} alt="logo"/> 
+                        <img src={logo} alt="logo"/> 
                      </Navbar.Brand>
-                  </a>
+                  </Link>
 
                </Navbar.Header>
             </Navbar.Form>
 
             <Navbar.Form pullRight>
-               <Nav> {logView} </Nav>
+               {logView}
             </Navbar.Form>
          </Navbar>
          </>
       );
-   }
+}
 }
 
 export default ConNavbar;
