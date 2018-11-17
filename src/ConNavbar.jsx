@@ -12,7 +12,7 @@ function LinkIcon({alt, src, route, ...props}) {
 
 function NavHolder({selectIndex, handleLogout, ...props}) {
    let items = props.children.map((item, i) => {
-      return <NavItem key={i} className={(i === selectIndex) && "active"}> { item } </NavItem>
+      return <li key={i} role="presentation" className={(i === selectIndex) && "active" || ""}> { item } </li>
    });
 
    return (
@@ -28,7 +28,7 @@ class ConNavbar extends Component {
          <NavHolder selectIndex={this.props.isGlobal && 1 || 0 }>
             <LinkIcon route="/"       src={person} alt="person collection" />
             <LinkIcon route="/global" src={earth} alt="global collection" />
-            <span onClick={this.props.handleLogout}> Log Out </span>
+            <Link to="" onClick={this.props.handleLogout}> Log Out </Link>
          </NavHolder>
       );
 

@@ -37,3 +37,13 @@ code {
 .con-nav-icon {
    width: 17px;
 }
+
+.con-panel-heading {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.con-navtext {
+   cursor: pointer;
+}

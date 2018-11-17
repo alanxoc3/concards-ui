@@ -6,6 +6,8 @@ import { withRouter, } from "react-router";
 import { auth } from "./firebase";
 import firebase from "./firebase";
 import * as ends from "./endpoints";
+import { Switch, Route } from "react-router-dom";
+import { HomePage, PersonalPage, GlobalPage, ReviewPage, ErrorPage } from './pages';
 
 class App extends Component {
    state = {
@@ -56,6 +58,24 @@ class App extends Component {
    }
 
    render() {
+      const loggedInRoutes = (
+         <>
+            <Switch>
+               <Route exact path="/global" component={GlobalPage} />
+               <Route exact path="/review" component={ReviewPage} />
+               <Route exact path="/" component={PersonalPage} />
+            </Switch>
+         </>
+      );
+
+      const notLoggedInRoutes = (
+         <>
+            <Switch>
+               <Route exact path="/"       component={HomePage} />
+            </Switch>
+         </>
+      );
+
       return (
          <div className="con-app">
             <ConNavbar
@@ -79,7 +99,7 @@ class App extends Component {
             />
 
             <div className="con-page-body">
-               {this.props.children}
+               {this.state.authUser && loggedInRoutes || notLoggedInRoutes}
             </div>
          </div>
       );
