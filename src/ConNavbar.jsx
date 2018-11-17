@@ -9,7 +9,6 @@ import * as ends from "./endpoints"; //TODO remove this
 // handleLogout loggedIn loginOpen signupOpen
 class ConNavbar extends Component {
    render() {
-      
       let logView = (
 
          <>
