@@ -4,11 +4,14 @@ import person from './res/person.svg';
 import earth from './res/earth.svg';
 import { Navbar, Nav, NavItem, } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import * as ends from "./endpoints"; //TODO remove this
 
 // handleLogout loggedIn loginOpen signupOpen
 class ConNavbar extends Component {
    render() {
+      
       let logView = (
+
          <>
             { this.props.isGlobal && <Navbar.Text> <Link to="/"> <img alt="personal collection" src={person} />  </Link> </Navbar.Text>}
             {!this.props.isGlobal && <Navbar.Text> <Link to="/global"> <img alt="global collection" src={earth} /> </Link> </Navbar.Text>}
