@@ -25,9 +25,11 @@ code {
    background-color: "light-grey";
 }
 
-.con-page-body {
-    margin-left: 20px;
-    padding: 20px;
-    background-color: #f8f8f8;
-    margin-right: 20px;
- }
+.con-frame-center {
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.con-panel-frame {
+   width: 80%;
+}
