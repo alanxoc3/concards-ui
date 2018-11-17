@@ -4,13 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Switch, BrowserRouter, Route } from "react-router-dom";
-import { MainPage, GlobalPage, ReviewPage, ErrorPage } from './pages';
+import { PersonalPage, GlobalPage, ReviewPage, ErrorPage } from './pages';
 
 ReactDOM.render(
    <BrowserRouter>
       <App>
          <Switch>
-            <Route exact path="/" component={MainPage} />
+            <Route exact path="/" component={PersonalPage} />
             <Route exact path="/global" component={GlobalPage} />
             <Route exact path="/review" component={ReviewPage} />
             <Route component={ErrorPage} />
