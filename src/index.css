@@ -12,3 +12,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.navbar-brand {
+   float: left;
+   height: 50px;
+   padding: 10px 10px;
+   font-size: 18px;
+   line-height: 20px;
+}
