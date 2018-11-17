@@ -1,3 +1,5 @@
+import firebase from './firebase'
+
 export function login(email, password) {
    return new Promise(function(resolve, reject) {
       setTimeout(function() {
@@ -8,6 +10,12 @@ export function login(email, password) {
 
 export function signup(email, password) {
    return new Promise(function(resolve, reject) {
+    firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then((user) => {
+      console.log(user);
+    })
       setTimeout(function() {
          resolve('foo');
       }, 300);
