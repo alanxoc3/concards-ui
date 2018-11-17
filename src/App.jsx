@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ConNavbar from './ConNavbar';
 import ConLoginModal from './ConLoginModal';
-import { MainPage, GlobalPage, ReviewPage, ErrorPage } from './pages';
 import { withRouter, } from "react-router";
 
 class App extends Component {
